@@ -59,7 +59,7 @@ namespace CampingReservationsAPI
             {
                 c.SwaggerDoc("v1", new OpenApiInfo
                 {
-                    Title = "CampingReservationsAPI",
+                    Title = "Camping reservations microservice API",
                     Version = "v1",
                     Description = "Web API for camping reservations."
                 });

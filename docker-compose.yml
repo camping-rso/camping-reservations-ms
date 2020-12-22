@@ -1,0 +1,35 @@
+version: '3.4'
+
+networks:
+  camping-reservations-ms-network:
+    driver: bridge
+
+services:
+  camping-reservations-ms-postgres:
+    image: postgres:9.6
+    ports:
+      - "5432:5432"
+    restart: always
+    volumes:
+      - ./database/camping-reservations-ms.sql:/docker-entrypoint-initdb.d/camping-reservations-ms.sql
+      - ./database/data.sql:/docker-entrypoint-initdb.d/data.sql
+    environment:
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "postgres"
+      POSTGRES_DB: "kampi"
+    networks:
+      - camping-reservations-ms-network
+
+  camping-reservations-ms-api:
+    image: campingrso/camping-reservations-ms:latest
+    depends_on:
+      - "camping-reservations-ms-postgres"
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8082:80"
+    environment:
+      DB_CONNECTION_STRING: "Host=camping-reservations-ms-postgres;Port=5432;Database=kampi;Username=postgres;Password=postgres;Pooling=true;"
+    networks:
+      - camping-reservations-ms-network
