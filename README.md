@@ -1,4 +1,4 @@
-# cCamping reservations ms
+# Camping reservations ms
 
 A microservice for camping reservations.
 
