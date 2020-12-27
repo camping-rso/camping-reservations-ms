@@ -70,7 +70,13 @@ namespace CampingReservationsAPI.Controllers
         ///
         ///     POST api/rezervacije
         ///     {
-        ///         "Datum": "1234-00-12 12:29"
+        ///         "trajanje_od": "1234-00-12 12:29"            
+        ///         "trajanje_do": "1234-00-12 12:29",
+        ///         "uporabnik": 5
+        ///         "avtokamp": 2
+        ///         "kampirno_mesto": 78
+        ///         "vrsta_kampiranja": 1
+        ///         "status_rezervacije": 5
         ///     }
         ///
         /// </remarks>
@@ -113,7 +119,7 @@ namespace CampingReservationsAPI.Controllers
         ///
         ///     PUT api/rezervacije/1234
         ///     {
-        ///         "Datum": "Nov datum"
+        ///         "trajanje_do": "Nov datum"
         ///     }
         ///
         /// </remarks>
