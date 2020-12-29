@@ -83,7 +83,7 @@ namespace CampingReservationsAPI
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Avtokampi");
+                c.SwaggerEndpoint("/camping-reservations/swagger/v1/swagger.json", "Avtokampi");
                 c.RoutePrefix = string.Empty;
             });
 
