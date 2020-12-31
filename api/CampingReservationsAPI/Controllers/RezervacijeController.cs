@@ -23,6 +23,41 @@ namespace CampingReservationsAPI.Controllers
         }
 
         /// <summary>
+        ///     Seznam rezervacij za prijavljenega uporabnika
+        /// </summary>
+        /// <remarks>
+        /// Primer zahtevka:
+        ///
+        ///     GET api/rezervacije/123/uporabnik
+        ///
+        /// </remarks>
+        /// <returns>Seznam rezervacij</returns>
+        /// <response code="200">Seznam rezervacij za uporabnika</response>
+        /// <response code="400">Bad request error massage</response>
+        /// <response code="404">Not found error massage</response>
+        [HttpGet("{user_id}/uporabnik")]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(404)]
+        [ProducesResponseType(400)]
+        public async Task<IActionResult> GetRerezvacijeByUporabnik(int user_id)
+        {
+            try
+            {
+                var result = await _rezervacijeService.GetRezervacijeByUporabnik(user_id);
+                if (result == null)
+                {
+                    return NotFound(/*new ErrorHandlerModel($"Uprabnik z ID { id }, ne obstaja.", HttpStatusCode.NotFound)*/);
+                }
+                return Ok(result);
+            }
+            catch (Exception e)
+            {
+                _logger.LogError("GET rezervacije by user Unhandled exception ...", e);
+                return BadRequest(/*new ErrorHandlerModel(e.Message, HttpStatusCode.BadRequest)*/);
+            }
+        }
+
+        /// <summary>
         ///     Podatki o rezervaciji
         /// </summary>
         /// <remarks>

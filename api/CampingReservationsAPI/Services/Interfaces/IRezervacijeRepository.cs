@@ -6,6 +6,8 @@ namespace CampingReservationsAPI.Services.Interfaces
 {
     public interface IRezervacijeRepository
     {
+        Task<List<Rezervacije>> GetRezervacijeByUporabnik(int uporabnik_id);
+
         Task<Rezervacije> GetRezervacijaByID(int rez_id);
 
         Task<bool> CreateRezervacija(Rezervacije rez);

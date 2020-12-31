@@ -17,6 +17,11 @@ namespace CampingReservationsAPI.Services
             _db = db;
         }
 
+        public async Task<List<Rezervacije>> GetRezervacijeByUporabnik(int uporabnik_id)
+        {
+            return await _db.Rezervacije.Where(o => o.Uporabnik == uporabnik_id).ToListAsync();
+        }
+
         public async Task<Rezervacije> GetRezervacijaByID(int rez_id)
         {
             return await _db.Rezervacije.Where(o => o.RezervacijaId == rez_id).FirstOrDefaultAsync();

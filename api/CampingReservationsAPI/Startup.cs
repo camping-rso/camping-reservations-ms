@@ -39,14 +39,18 @@ namespace CampingReservationsAPI
             var connectionString = Environment.GetEnvironmentVariable("DB_CONNECTION_STRING");
 
             // DB models service
-            services.AddEntityFrameworkNpgsql().AddDbContext<avtokampiContext>(options =>
-                options.UseNpgsql(connectionString)
-            );
-
-            // DB models service
-            //services.AddEntityFrameworkNpgsql().AddDbContext<avtokampiContext>(options =>
-            //    options.UseNpgsql(Configuration.GetConnectionString("Avtokampi"))
-            //);
+            if (connectionString == null)
+            {
+                services.AddEntityFrameworkNpgsql().AddDbContext<avtokampiContext>(options =>
+                    options.UseNpgsql(Configuration.GetConnectionString("Avtokampi"))
+                );
+            }
+            else
+            {
+                services.AddEntityFrameworkNpgsql().AddDbContext<avtokampiContext>(options =>
+                    options.UseNpgsql(connectionString)
+                );
+            }
 
             // Repository services
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
