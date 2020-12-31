@@ -84,7 +84,18 @@ namespace CampingReservationsAPI
 
             app.UseHttpsRedirection();
 
-            app.UseSwagger();
+            app.UseSwagger(c =>
+            {
+                c.PreSerializeFilters.Add((swagger, httpReq) =>
+                {
+                    var servers = new List<OpenApiServer>();
+
+                    servers.Add(new OpenApiServer { Url = $"http://camping-reservations/{httpReq.Host.Value}" });
+
+                    swagger.Servers = servers;
+                });
+            });
+
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/camping-reservations/swagger/v1/swagger.json", "Avtokampi");
