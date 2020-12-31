@@ -1,7 +1,6 @@
 using CampingReservationsAPI.Models;
 using CampingReservationsAPI.Services;
 using CampingReservationsAPI.Services.Interfaces;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -9,14 +8,12 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
-using System.Text;
 
 namespace CampingReservationsAPI
 {
@@ -90,7 +87,7 @@ namespace CampingReservationsAPI
                 {
                     var servers = new List<OpenApiServer>();
 
-                    servers.Add(new OpenApiServer { Url = $"http://camping-reservations/{httpReq.Host.Value}" });
+                    servers.Add(new OpenApiServer { Url = $"http://{httpReq.Host.Value}/camping-reservations" });
 
                     swagger.Servers = servers;
                 });
