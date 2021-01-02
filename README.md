@@ -6,6 +6,7 @@ Table of Contents
 =================
 - [Precondition](#precondition)
 - [Installation and operation](#installation-and-operation)
+- [Environment variables](#environment-variables)
 - [Database](#database)
 
 
@@ -32,6 +33,11 @@ When you have the development environment ready, run the following commands:
     - `Update-Database -Project WebApp.Infrastructure` -> if you are using the Packege Manager Console
     
 4. You can then launch the app
+
+
+## Environment variables
+
+This microservice camping API requires microservices endpoint. For that you can set DB_CONNECTION_STRING environment variable when running with Docker.
 
 
 ## Database
