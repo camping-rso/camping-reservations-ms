@@ -37,7 +37,7 @@ When you have the development environment ready, run the following commands:
 
 ## Environment variables
 
-This microservice camping API requires microservices endpoint. For that you can set DB_CONNECTION_STRING environment variable when running with Docker.
+This microservice camping API requires microservices endpoint. For that you can set `DB_CONNECTION_STRING` environment variable when running with Docker.
 
 
 ## Database
