@@ -36,7 +36,7 @@ When you have the development environment ready, run the following commands:
 
 ## Database
 
-Database image of camping overview ms.
+Database image of camping reservations ms.
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/camping-rso/camping-reservations-ms/master/database/camping-reservations-ms.png"/>
